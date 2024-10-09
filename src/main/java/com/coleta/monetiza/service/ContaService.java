@@ -1,6 +1,8 @@
 package com.coleta.monetiza.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import com.coleta.monetiza.model.Conta;
 import com.coleta.monetiza.repository.ContaRepository;
@@ -16,8 +18,8 @@ public class ContaService {
         return contaRepository.findById(conta.getId()).orElse(null);                   
     }
     
-    public List<Conta> findAll(){
-        return contaRepository.findAll();
+    public Page<Conta> findAll(Pageable pageable){
+        return contaRepository.findAll(pageable);
     }
 
     public Conta find(Long id){
@@ -52,4 +54,8 @@ public class ContaService {
         }
         return false;
     }
+	public Conta findById(Long id) {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'findById'");
+	}
 }
