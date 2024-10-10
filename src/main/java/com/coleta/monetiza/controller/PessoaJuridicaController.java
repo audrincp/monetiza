@@ -50,6 +50,10 @@ public class PessoaJuridicaController implements IController<PessoaJuridica>{
 		return ResponseEntity.ok(service.findAll());
 	}
 	
+	public PessoaFisicaService getService() {
+		return service;
+	}
+
 	@Override
 	@GetMapping(value = "/{id}", produces = "application/json")
 	@Operation(summary = "Obtém uma pessoa jurídica"
