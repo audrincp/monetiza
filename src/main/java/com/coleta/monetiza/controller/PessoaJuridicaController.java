@@ -16,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.coleta.monetiza.model.PessoaJuridica;
-import com.coleta.monetiza.service.PessoaFisicaService;
+import com.coleta.monetiza.model.PessoaJuridica;import com.coleta.monetiza.service.PessoaJuridicaService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,7 +29,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Pessoa Jurídica", description = "Gerenciar pessoa jurídica")
 public class PessoaJuridicaController implements IController<PessoaJuridica>{
 	@Autowired
-	private PessoaFisicaService service;
+	private PessoaJuridicaService service;
 	
 	@Override
 	@GetMapping(produces = "application/json")
