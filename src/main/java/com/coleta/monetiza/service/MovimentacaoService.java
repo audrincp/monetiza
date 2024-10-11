@@ -1,27 +1,36 @@
 package com.coleta.monetiza.service;
 
-import com.coleta.monetiza.controller.Movimentacao;
+import java.util.List;
 
-public class MovimentacaoService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    public Object findByConta(Integer idConta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findByConta'");
-    }
+import com.coleta.monetiza.model.Movimentacao;
+import com.coleta.monetiza.repository.MovimentacaoRepository;
 
-    public void saveWithConta(Movimentacao movimentacao, Integer idConta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'saveWithConta'");
-    }
+@Service
+public class MovimentacaoService extends AbstractService<Movimentacao> {
+	private MovimentacaoRepository repository;
 
-    public boolean delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
-
-    public Movimentacao findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
+	public MovimentacaoService(MovimentacaoRepository repository) {
+		super(repository);
+	}
+	
+	@Autowired
+	public void setRepository(MovimentacaoRepository repository) {
+		this.repository = repository;
+	}
+	
+	public MovimentacaoRepository getRepository() {
+		return repository;
+	}
+	
+	public List<Movimentacao> findByConta(Integer idConta){
+		return repository.findByConta(idConta);
+	}
+	
+	public void saveWithConta(Movimentacao movimentacao, Integer idConta) {
+		repository.saveWithConta(movimentacao, idConta);
+	}
+	
 }

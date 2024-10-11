@@ -1,6 +1,7 @@
 package com.coleta.monetiza.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -45,12 +46,19 @@ public class ContaController implements IController<Conta>{
 			           , content = {@Content(mediaType = "application/json")} 
 			)
 	})	
+	@Operation(summary = "Retorna a lista de contas",
+		   description = "Obtém uma lista de contas com todos os seus dados")
+	public ResponseEntity<List<Conta>> getAll(){
+		return ResponseEntity.ok(service.findAll());
+	}
+	
 	@Operation(summary = "Retorna a lista de contas, de forma paginada",
 			   description = "Obtém uma lista de contas com todos os seus dados, de forma paginada")
+	@GetMapping(value = "/page")
 	public ResponseEntity<Page<Conta>> getAll(Pageable pageable){
 		return ResponseEntity.ok(service.findAll(pageable));
 	}	
-	
+
 	@Override
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public ResponseEntity<Conta> get(@PathVariable("id") Long id) {

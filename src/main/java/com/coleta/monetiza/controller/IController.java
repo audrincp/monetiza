@@ -1,11 +1,10 @@
 package com.coleta.monetiza.controller;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 public interface IController<T> {
-   ResponseEntity<Page<T>> getAll(Pageable pageable);
+   ResponseEntity<List<T>> getAll();
    ResponseEntity<?> get(Long id);
    ResponseEntity<T> post(T obj);
    ResponseEntity<?> put(T obj);

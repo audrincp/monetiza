@@ -1,7 +1,5 @@
 package com.coleta.monetiza.model;
 
-import java.util.Map;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -33,10 +31,5 @@ public class PessoaJuridica extends Cliente {
 
 	public void setRamoAtividade(String ramoAtividade) {
 		this.ramoAtividade = ramoAtividade;
-	}
-
-	public Map<String, ?> getId() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getId'");
 	}
 }

@@ -1,12 +1,9 @@
 package com.coleta.monetiza.controller;
 
-
 import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.coleta.monetiza.model.Movimentacao;
 import com.coleta.monetiza.service.MovimentacaoService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,7 +45,7 @@ public class MovimentacaoController implements IController<Movimentacao>{
 	})
 	@Operation(summary = "Retorna a lista de movimentacaos",
 		   description = "Obtém uma lista de movimentações por conta")
-	public ResponseEntity<Object> getAll(Pageable pageable, @PathVariable("idConta") Integer idConta){
+	public ResponseEntity<List<Movimentacao>> getAll(@PathVariable("idConta") Integer idConta){
 		return ResponseEntity.ok(service.findByConta(idConta));
 	}
 	
@@ -101,46 +99,7 @@ public class MovimentacaoController implements IController<Movimentacao>{
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((service == null) ? 0 : service.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MovimentacaoController other = (MovimentacaoController) obj;
-		if (service == null) {
-			if (other.service != null)
-				return false;
-		} else if (!service.equals(other.service))
-			return false;
-		return true;
-	}
-
-	public MovimentacaoService getService() {
-		return service;
-	}
-
-	public void setService(MovimentacaoService service) {
-		this.service = service;
-	}
-
-	@Override
 	public ResponseEntity<Movimentacao> post(Movimentacao obj) {
 		throw new UnsupportedOperationException("Operação não suportada");
-	}
-
-	@Override
-	public ResponseEntity<Page<Movimentacao>> getAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getAll'");
 	}	
 }

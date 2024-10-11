@@ -1,52 +1,70 @@
 package com.coleta.monetiza.model;
-import java.io.Serializable;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-@Entity
-public class Conta implements Serializable {
-	public Conta(Long id) {
-        this.id = id;
-    }
-    public Long getId() {
-        return id;
-    }
-    private static final long serialVersionUID = -4205156507257923921L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-    private Integer agencia;
-	private String numero;
-	private String titular;
-	private Double saldo;
-    public Integer getAgencia() {
-        return agencia;
-    }
-    public void setAgencia(Integer agencia) {
-        this.agencia = agencia;
-    }
-    public String getNumero() {
-        return numero;
-    }
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-    public String getTitular() {
-        return titular;
-    }
-    public void setTitular(String titular) {
-        this.titular = titular;
-    }
-    public Double getSaldo() {
-        return saldo;
-    }
-    public void setSaldo(Double saldo) {
-        this.saldo = saldo;
-    }
-    public void setId(Long newId) {
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
-        throw new UnsupportedOperationException("Unimplemented method 'setId'");
-    }
+@Entity
+@Table(name = "tb_conta")
+public class Conta extends AbstractEntity {
+	private static final long serialVersionUID = 1L;
+
+	@Column(name = "nr_agencia", nullable = false)
+	private Integer agencia;
+	@Column(name = "nm_numero", nullable = false, length = 10)
+	private String numero;
+	@Column(name = "vl_saldo", nullable = false)
+	private Double saldo;
+
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "conta_id")
+	private List<Movimentacao> movimentacoes;
+
+	public Conta() {
+
+	}
+
+	public Conta(Long id) {
+		super.setId(id);
+	}
+
+	public Integer getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(Integer agencia) {
+		this.agencia = agencia;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public Double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
+	//@JsonIgnore /*Indica que o atributo ou método anotado deve ser ignorado na serialização e desserialização*/
+	public List<Movimentacao> getMovimentacoes() {
+		return movimentacoes;
+	}
+	@JsonProperty /*Usada para mapear nomes de atributos em chaves JSON durante a serialização e desserialização*/
+	public void setMovimentacoes(List<Movimentacao> movimentacoes) {
+		this.movimentacoes = movimentacoes;
+	}
+
 }

@@ -1,32 +1,27 @@
 package com.coleta.monetiza.service;
 
-import com.coleta.monetiza.model.PessoaJuridica;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class PessoaFisicaService {
+import com.coleta.monetiza.model.PessoaFisica;
+import com.coleta.monetiza.repository.PessoaFisicaRepository;
 
-    public Object findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
-    }
+@Service
+public class PessoaFisicaService extends AbstractService<PessoaFisica> {
+	private PessoaFisicaRepository repository;
 
-    public PessoaJuridica findById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findById'");
-    }
-
-    public void create(PessoaJuridica pessoaJuridica) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
-    }
-
-    public boolean update(PessoaJuridica pessoaJuridica) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    public boolean delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
-
+	public PessoaFisicaService(PessoaFisicaRepository repository) {
+		super(repository);
+	}
+	
+	@Autowired
+	public void setRepository(PessoaFisicaRepository repository) {
+		this.repository = repository;
+	}
+	
+	public PessoaFisicaRepository getRepository() {
+		return repository;
+	}
+	
 }
+

@@ -1,4 +1,3 @@
-
 package com.coleta.monetiza.model;
 
 

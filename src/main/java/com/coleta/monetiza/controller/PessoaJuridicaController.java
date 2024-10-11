@@ -1,10 +1,9 @@
 package com.coleta.monetiza.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,12 +45,8 @@ public class PessoaJuridicaController implements IController<PessoaJuridica>{
 			)
 	})
 	@Operation(summary = "Retorna a lista de pessoas jurídica")
-	public ResponseEntity<Object> getAll(){
+	public ResponseEntity<List<PessoaJuridica>> getAll(){
 		return ResponseEntity.ok(service.findAll());
-	}
-	
-	public PessoaFisicaService getService() {
-		return service;
 	}
 
 	@Override
@@ -177,10 +172,4 @@ public class PessoaJuridicaController implements IController<PessoaJuridica>{
 		}
 		return ResponseEntity.notFound().build();
 	}
-
-	@Override
-	public ResponseEntity<Page<PessoaJuridica>> getAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'getAll'");
-	}	
 }
