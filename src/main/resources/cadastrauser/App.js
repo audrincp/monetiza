@@ -8,7 +8,7 @@ const CadastroUsuario = () => {
   const [endereco, setEndereco] = useState('');
   const [telefone, setTelefone] = useState('');
   const [dataNascimento, setDataNascimento] = useState('');
-  const [projetos, setProjetos] = useState('');
+  const [cpf, setCPF] = useState('');
   const [image, setImage] = useState(null);
 
   const handleSubmit = () => {
@@ -81,6 +81,13 @@ const CadastroUsuario = () => {
           placeholder="Data de Nascimento (DD/MM/AAAA)"
           value={dataNascimento}
           onChangeText={setDataNascimento}
+        />
+        <Text style={{ color: 'blue', marginTop: 5 }}>CPF:</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="CPF"
+          value={cpf}
+          onChangeText={setCPF}
         />
 
 
