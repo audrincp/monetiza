@@ -1,0 +1,253 @@
+/*fonte do projeto*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lexend:wght@100..900&display=swap');
+/*paleta de cores*/
+:root {
+    --background-verde: hsl(137, 51%, 63%);    
+    --background-verde-claro: #70d18c;
+    --background-branco: #FEFCFE;
+    --background-branco-75: hsla(300, 50%, 99%, 0.650);
+    --border-branco: #DBD8E0;
+    --texto-branco: rgba(255, 255, 255, 0.95);
+    --branco: #F0F0F3;
+    --cinza: #DBD8E0;
+    --texto: #211F26;
+}
+/*reset css*/
+* { 
+    padding: 0; margin: 0;
+    box-sizing: content-box;
+    border: 0;
+    border-radius: 0;
+    background-color: #70d18c;
+    font-family: 'Lexend','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#login-container {
+    display: flex;
+    height: 100vh;
+
+}
+#login-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 100px;
+    flex-flow: column;
+    position: relative;
+    background-color: var(--background-roxo);
+    width: 50vw;
+}
+    .login-card-style h1 {
+        text-align: left;
+        font-size: 2em;
+        color: var(--texto-branco);
+    }
+    .login-card-style p {
+        margin-top: 10px;
+        text-align: left;
+        color: var(--texto-branco);
+        font-size: 0.9em;
+    }
+    .login-card-style form{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 60px;
+    }
+    .login-card-style form input {
+        padding: 12px;
+        border-radius: 12px;
+        background-color: var(--background-branco);
+        border: 1px solid var(--border-branco);
+        transition: all 0.3s ease;
+    }
+    .login-card-style form button { 
+        margin-top: 20px;
+        padding: 12px;
+        border-radius: 12px;
+        border: var(--border-branco) 2px solid;
+        background-color: transparent;
+        font-weight: bold;
+        color: var(--texto-branco);
+        transition: all 0.3s ease;
+    }
+    .login-card-style form button:hover {
+        cursor: pointer;
+        background-color: var(--background-branco-75);
+        color: var(--texto);
+        transform: scale(0.995);
+        transition: all 0.3s ease;
+    }
+
+#login-img img{
+    width: 500px;
+}
+#login-img{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50vw; 
+}
+
+/*PÃGINA: LOGIN*/
+#table-page-container {
+    margin: 30px 20px 0px;
+    background-color: var(--background-verde-claro);
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh; 
+    justify-content: center;
+}
+#table-container {
+    padding: 20px;
+    background-color: var(--background-branco);
+    border-radius: 24px;
+    filter: drop-shadow(0px 5px 5px #00000017);
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: hidden; 
+}
+#table-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+}
+#table-header button {
+    padding: 12px;
+    border-radius: 12px;
+    border: var(--border-branco) 2px solid;
+    background-color: transparent;
+    font-weight: bold;
+    color: var(--texto);
+}
+#table-header button:hover {
+    cursor: pointer;
+    background-color: var(--branco);
+    border: 2px solid var(--border-branco);
+    transition: all 0.3s ease;
+}
+#table-overflow { 
+    height: 400px; 
+    overflow-y: scroll; 
+    position: relative;
+}
+table { 
+    width:100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+thead { position: sticky; }
+th { 
+    padding: 10px 10px;
+    font-size: 0.7em; 
+    color: var(--roxo-escuro);
+    background-color: var(--background-verde-claro);
+}
+tr {
+    height: auto;
+    height: 5px;
+    border-bottom: 1px solid var(--border-branco);
+}
+tr:hover {
+    background-color: var(--verde-claro);
+}
+td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 5px 0px;
+    text-align: center;
+    font-size: 0.7em;
+}
+.th-id {
+    width: 20px;
+}
+.data-button {
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 6px;
+    background-color: var(--branco);
+    border: 1px solid var(--border-branco);
+}
+.data-button:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+    transition: all 0.3s ease-in-out;
+
+}
+/*MODAL*/
+.modal-form {
+    position: fixed;
+    box-sizing: border-box;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    padding: 20px;
+    background-color: var(--background-branco);
+    border-radius: 24px;
+    filter: drop-shadow(0px 0px 10px #00000017);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+}
+
+.modal-text { 
+    grid-area: 1 / 1 / 2 / 5; 
+    font-size: 0.9em;
+    text-align: center;
+}
+.modal-input {
+    padding: 6px 15px;
+    border-radius: 12px;
+    border: var(--border-branco) 2px solid;
+    background-color: transparent;
+    font-size: 0.7em;
+    color: var(--texto);
+}
+.modal-button {    
+    padding: 8px;
+    border-radius: 16px;
+    border: var(--border-branco) 2px solid;
+    background-color: var(--background-roxo-claro);
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--texto);
+}
+.modal-button:hover {
+    cursor: pointer; 
+    filter: brightness(90%);
+    transition: all 0.3s ease-in-out;
+}
+.modal-form input[placeholder="Nome"] { grid-area: 2 / 1 / 3 / 2; }
+.modal-form input[placeholder="Sobrenome"] { grid-area: 2 / 2 / 3 / 3; }
+.modal-form input[placeholder="Telefone"] { grid-area: 2 / 3 / 3 / 4; }
+.modal-form input[placeholder="CPF"] { grid-area: 3 / 1 / 4 / 2; }
+.modal-form input[placeholder="EndereÃ§o"] { grid-area: 3 / 2 / 4 / 3; }
+.modal-form input[placeholder="Estado"] { grid-area: 3 / 3 / 4 / 4; }
+.modal-form input[placeholder="Email"] { grid-area: 3 / 4 / 4 / 5; }
+.modal-form input[type="submit"], .modal-form input[type="button"] { grid-area: 4 / 4 / 5 / 5; }
+
+/*RODAPÃ‰*/
+.credits {
+    padding: 16px;
+    font-size: 0.7em;
+    color: var(--texto-branco);
+}
+.credits a {
+    color: var(--texto-branco);
+    text-decoration: none;
+    opacity: 70%;
+}
+.credits a:hover {
+    transition: all 0.3s ease-in-out;
+    opacity: 100%;
+}
